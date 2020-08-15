@@ -3,7 +3,15 @@
     font-size: 24px;
     background-color: #aa00b0;
     text-transform: uppercase;
-    text-align: left;
     color: #fff;
     border: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logoutBtn {
+    appearance: none;
+    border: none;
+    border-radius: 2px;
+    padding: 8px 30px;
 }
