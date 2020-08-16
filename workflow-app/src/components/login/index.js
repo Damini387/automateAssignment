@@ -45,7 +45,6 @@ const Login = () => {
                             return errors;
                         }}
                         onSubmit={(values, { setSubmitting }) => {
-                            console.log(values);
                             if (values.rememberme) {
                                 localStorage.setItem("username", values.email);
                                 localStorage.setItem("password", values.password);
