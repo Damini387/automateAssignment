@@ -4,7 +4,7 @@ import './index.css';
 
 const Section = (props) => {
 
-    const { name } = props;
+    const { workflowName, workflowStatus } = props;
 
     const deleteIcon = () => {
         console.log("deleted");
@@ -16,13 +16,13 @@ const Section = (props) => {
 
             <div className="deleteIcon" onClick={deleteIcon}></div>
 
-            <div className="workflowName">Workflow</div>
+            <div className="workflowName">{workflowName}</div>
 
             <div className="workflowStatus">
 
-                <p className="statusName">completed</p>
+                <p className="statusName">{workflowStatus}</p>
 
-                <div className={`icon ${name}`}>
+                <div className={`icon ${workflowStatus}`}>
                     <div className="checkMark"></div>
                 </div>
 

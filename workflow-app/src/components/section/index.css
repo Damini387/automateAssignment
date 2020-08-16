@@ -10,6 +10,7 @@
     font-size: 13px;
     position: relative;
     box-shadow: 5px 0 5px -2px #ccc;
+    margin-right: 50px;
 }
 
 .section .workflowName {
@@ -74,6 +75,14 @@
     right: -20px;
 }
 
+.createSection .workflowName {
+    cursor: pointer;
+}
+
+.createSection .workflowName.selected {
+    background-color: #f1f181;
+}
+
 .checkMark {
     transform: rotate(45deg);
     height: 10px;
@@ -105,4 +114,37 @@
 
 .modal .nodeBtn {
     max-width: 150px;
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.buttons button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    width: 100px;
+    margin-left: 15px;
+}
+
+.buttons .shuffleBtn {
+    background-color: purple;
+}
+
+.buttons .deleteBtn {
+    background-color: #fd072c;
+}
+
+.buttons .nodeBtn {
+    background-color: #14bc4f;
+}
+
+.buttons .saveBtn {
+    background-color: #007eff;
 }
