@@ -1,38 +1,56 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import Section from '../section';
 
 import './index.css';
+import WorkflowCreate from './create';
 
 const WorkflowHome = () => {
+
+    const [showCreateModal, setShowCreateModal] = useState(false);
 
     const renderSections = () => {
 
         return <Section />
     };
 
+    const showModal = () => {
+        setShowCreateModal(true);
+    }
+
     return (
 
         <Fragment>
-            <div className="topNav">
 
-                <div className="searchFilter">
+            {!showCreateModal &&
 
-                    <input name="search" placeholder="Search Workflows" className="searchBtn" />
+                <div>
+                    <div className="topNav">
 
-                    <button className="filterBtn">Filter</button>
+                        <div className="searchFilter">
 
+                            <input name="search" placeholder="Search Workflows" className="searchBtn" />
+
+                            <button className="filterBtn">Filter</button>
+
+                        </div>
+
+                        <button className="createBtn" onClick={showModal}>Create Workflow</button>
+
+                    </div>
+
+                    <div className="mainContainer">
+
+                        {renderSections()}
+
+                    </div>
                 </div>
+            }
 
-                <button className="createBtn">Create Workflow</button>
+            {
+                showCreateModal && <WorkflowCreate />
+            }
 
-            </div>
-
-            <div className="mainContainer">
-
-                {renderSections()}
-
-            </div>
         </Fragment>
 
     );

@@ -1,7 +1,10 @@
 import React from 'react';
+
 import './index.css';
 
-const Section = () => {
+const Section = (props) => {
+
+    const { name } = props;
 
     const deleteIcon = () => {
         console.log("deleted");
@@ -19,7 +22,9 @@ const Section = () => {
 
                 <p className="statusName">completed</p>
 
-                <div className="icon"></div>
+                <div className={`icon ${name}`}>
+                    <div className="checkMark"></div>
+                </div>
 
             </div>
 

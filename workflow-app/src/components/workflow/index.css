@@ -25,7 +25,9 @@
     background: #14bc4f;
     border: none;
     border-radius: 5px;
-    padding: 0px 45px;
+    padding: 0px 20px;
+    width: 100%;
+    max-width: 200px;
     color: #fff;
     display: flex;
     align-items: center;
@@ -42,4 +44,24 @@
 .mainContainer {
     display: flex;
     padding: 50px 30px;
+}
+
+.workFlowName {
+    padding: 10px 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.sections {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+}
+
+.section.createSection .workflowName {
+    margin-bottom: 20px;
+}
+
+.section.createSection .workflowName:last-child {
+    margin-bottom: 0;
 }
