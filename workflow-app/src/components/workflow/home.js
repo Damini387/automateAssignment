@@ -9,9 +9,23 @@ const WorkflowHome = () => {
 
     const [showCreateModal, setShowCreateModal] = useState(false);
 
+    let workflows = [
+        {
+            workflowName: "test123",
+            workflowStatus: "completed"
+        },
+        {
+            workflowName: "damini",
+            workflowStatus: "pending"
+        }
+    ];
+
     const renderSections = () => {
 
-        return <Section />
+        return workflows && workflows.map((workflow, index) => {
+            return <Section key={index} workflowName={workflow.workflowName} workflowStatus={workflow.workflowStatus} />
+        });
+
     };
 
     const showModal = () => {
