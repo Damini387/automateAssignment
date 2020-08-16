@@ -1,27 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useReducer, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
+import Header from '../header';
 import WorkflowHome from "../workflow/home";
+
+import showLogoutButton from '../../store/reducers';
 
 import './index.css';
 
 const Login = () => {
 
+    const [showLogout, dispatch] = useReducer(showLogoutButton, []);
+
     const [workFlowStatus, setWorkFlowStatus] = useState(false);
-
-    useEffect(()=>{
-
-    });
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,8}$/;
+
+    const showPage  = () => {
+        setWorkFlowStatus(false);
+    }
+
     return (
-        <React.Fragment>
+        <Fragment>
+            <Header showBtn={showLogout && showLogout.showLogoutButton} showLoginPage={showPage} />
+
             {!workFlowStatus &&
                 <div className="modal">
                     <p className="title">Login</p>
                     <Formik
-                        initialValues={{ email: "", password: "" }}
+                        initialValues={{ email: "damini@gmail.com", password: "S#qw0er" }}
                         validate={values => {
                             let errors = {};
                             if (values.email === "") {
@@ -38,10 +46,11 @@ const Login = () => {
                         }}
                         onSubmit={(values, { setSubmitting }) => {
                             console.log(values);
-                            if(values.rememberme) {
+                            if (values.rememberme) {
                                 localStorage.setItem("username", values.email);
                                 localStorage.setItem("password", values.password);
                             }
+                            dispatch({ type: 'SHOW_LOGOUT', payload: { showLogoutButton: true } });
                             setWorkFlowStatus(true);
                             setSubmitting(false);
                         }}
@@ -102,14 +111,12 @@ const Login = () => {
                     </Formik>
                 </div>
             }
+
             {workFlowStatus &&
-                <WorkflowHome />
-            }
-        </React.Fragment>
+                <WorkflowHome />}
+        </Fragment>
     );
 
 }
-
-
 
 export default Login;
