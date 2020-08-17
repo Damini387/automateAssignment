@@ -6,8 +6,6 @@ import WorkflowHome from "../workflow/home";
 
 import showLogoutButton from '../../store/reducers';
 
-import './index.css';
-
 const Login = () => {
 
     const [showLogout, dispatch] = useReducer(showLogoutButton, []);

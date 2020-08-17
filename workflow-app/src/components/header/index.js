@@ -2,8 +2,6 @@ import React, { useReducer, useState, useEffect } from 'react';
 
 import showLogoutButton from '../../store/reducers';
 
-import './index.css';
-
 const Header = (props) => {
 
     const { showBtn } = props;

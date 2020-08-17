@@ -1,13 +1,13 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import { isEmpty } from 'lodash';
 
-import Section from '../section';
-
-import './index.css';
 import WorkflowCreate from './create';
+import Section from '../section';
 
 const WorkflowHome = () => {
 
     const [showCreateModal, setShowCreateModal] = useState(false);
+    const [inputValue, setInputValue] = useState('');
 
     let workflows = [
         {
@@ -20,17 +20,66 @@ const WorkflowHome = () => {
         }
     ];
 
+    const [allWorkFlows, setAllWorkFlows] = useState(workflows);
+
+    useEffect(() => {
+        renderSections();
+    });
+
+    const showHome = (workflowName, workflowStatus) => {
+
+        workflows = [
+            ...allWorkFlows,
+            { workflowName: workflowName, workflowStatus: workflowStatus }
+        ];
+
+        setAllWorkFlows(workflows);
+
+        setShowCreateModal(false);
+    }
+
     const renderSections = () => {
 
-        return workflows && workflows.map((workflow, index) => {
-            return <Section key={index} workflowName={workflow.workflowName} workflowStatus={workflow.workflowStatus} />
-        });
+        if (inputValue && !isEmpty(inputValue)) {
+
+            return allWorkFlows && allWorkFlows.map((workflow, index) => {
+                return inputValue && workflow.workflowName.includes(inputValue) && <Section key={index} workflowName={workflow.workflowName} workflowStatus={workflow.workflowStatus} deleteSection={(e) => deleteSection(e)} />
+            });
+
+        }
+
+        else {
+
+            return allWorkFlows && allWorkFlows.map((workflow, index) => {
+                return <Section key={index} workflowName={workflow.workflowName} workflowStatus={workflow.workflowStatus} deleteSection={(e) => deleteSection(e)} />
+            });
+
+        }
+
+    };
+
+    const deleteSection = (e) => {
+
+        // e.currentTarget.parentElement.getAttribute("key");
+
+        // e.currentTarget.parentElement.remove();
+
+        console.log("pending functionality");
+
 
     };
 
     const showModal = () => {
         setShowCreateModal(true);
-    }
+    };
+
+    const searchWorkflow = (e) => {
+        const val = e.currentTarget.value;
+        setInputValue(val);
+
+        renderSections();
+
+    };
 
     return (
 
@@ -43,9 +92,9 @@ const WorkflowHome = () => {
 
                         <div className="searchFilter">
 
-                            <input name="search" placeholder="Search Workflows" className="searchBtn" />
+                            <input name="search" value={inputValue} placeholder="Search Workflows" className="searchBtn" onChange={searchWorkflow} />
 
-                            <button className="filterBtn">Filter</button>
+                            <button className="filterBtn" disabled>Filter</button>
 
                         </div>
 
@@ -62,7 +111,7 @@ const WorkflowHome = () => {
             }
 
             {
-                showCreateModal && <WorkflowCreate />
+                showCreateModal && <WorkflowCreate showHome={showHome} />
             }
 
         </Fragment>
