@@ -1,13 +1,11 @@
 import React from 'react';
 
-import './index.css';
-
 const Section = (props) => {
 
     const { workflowName, workflowStatus } = props;
 
-    const deleteIcon = () => {
-        console.log("deleted");
+    const deleteIcon = (e) => {
+        props.deleteSection(e);
     }
 
     return (

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './index.css';
-
 const CreateSection = (props) => {
 
     const { name, tasks } = props;

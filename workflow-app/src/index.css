@@ -15,3 +15,330 @@ code {
 button {
 	cursor: pointer;
 }
+
+button:disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+
+/* Header styles */
+.header {
+  padding: 10px 30px;
+  font-size: 24px;
+  background-color: #aa00b0;
+  text-transform: uppercase;
+  color: #fff;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoutBtn {
+  appearance: none;
+  border: none;
+  border-radius: 2px;
+  padding: 8px 30px;
+}
+
+
+/* login page */
+.modal {
+  padding: 30px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  align-items: center;
+  margin: 50px auto 0;
+  background-color: #fff;
+}
+
+.modal .title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.modal form {
+  width: 100%;
+}
+
+.modal .error {
+  font-size: 14px;
+  color: #ff0000;
+}
+
+.form-group {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.form-group.column {
+  flex-direction: column;
+}
+
+.form-group input {
+  padding: 10px 0 10px 50px;
+  border: 1px solid #ccc;
+  max-width: 425px;
+}
+
+.form-group input.invalid {
+  border-color: red;
+}
+
+.form-group input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.form-group input,
+.modal button {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.modal button {
+  padding: 10px 0;
+  background-color: #3a5cd9;
+  border: none;
+  box-shadow: 3px 3px 5px 6px #ccc;
+  color: #fff;
+}
+
+
+
+/* section and create section */
+
+.section {
+  width: 33%;
+  max-width: 200px;
+  border: 1px solid #000;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: left;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  box-shadow: 5px 0 5px -2px #ccc;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
+
+.section .workflowName {
+  border: 1px solid #000;
+  padding: 10px;
+  box-shadow: 1px 3px 5px 0px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}
+
+.section .workflowStatus {
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+  justify-content: space-between;
+}
+
+.workflowStatus .icon {
+  background: #14bc4f;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchFilter {
+  display: flex;
+  width: 100%;
+}
+
+.icon.completed {
+  background-color: #14bc4f;
+}
+
+.icon.inprogress {
+  background-color: #007eff;
+}
+
+.icon.pending {
+  background-color: #ccc;
+}
+
+.section .deleteIcon {
+  width: 40px;
+  height: 40px;
+  background: #fd072c;
+  border-radius: 100%;
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  cursor: pointer;
+}
+
+.createSection .icon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+}
+
+.createSection .workflowName {
+  cursor: pointer;
+}
+
+.createSection .workflowName.selected {
+  background-color: #f1f181;
+}
+
+.checkMark {
+  transform: rotate(45deg);
+  height: 10px;
+  width: 5px;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+}
+
+.createSections .modal {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  margin-left: -240px;
+  z-index: 2;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal .workFlowName {
+  margin-bottom: 30px;
+}
+
+.modal .nodeBtn {
+  max-width: 150px;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.buttons button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 14px;
+  width: 100px;
+  margin-left: 15px;
+}
+
+.buttons .shuffleBtn {
+  background-color: purple;
+}
+
+.buttons .deleteBtn {
+  background-color: #fd072c;
+}
+
+.buttons .nodeBtn {
+  background-color: #14bc4f;
+}
+
+.buttons .saveBtn {
+  background-color: #007eff;
+}
+
+.topNav {
+  display: flex;
+  padding: 30px;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.searchBtn {
+  padding: 8px 10px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  width: 350px;
+}
+
+.filterBtn {
+  border-radius: 5px;
+  border: 1px solid #000;
+  padding: 8px 20px;
+  background: none;
+  margin-left: 20px;
+}
+
+.createBtn {
+  background: #14bc4f;
+  border: none;
+  border-radius: 5px;
+  padding: 0px 20px;
+  width: 100%;
+  max-width: 200px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.createBtn::before {
+  content: '+';
+  font-weight: 600;
+  font-size: 22px;
+  padding-right: 5px;
+}
+
+.mainContainer {
+  display: flex;
+  margin: 50px 30px;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.workFlowName {
+  padding: 10px 5px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.sections {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}
+
+.section.createSection {
+  width: 100%;
+  max-width: inherit;
+}
+
+.section.createSection .workflowName {
+  margin-bottom: 20px;
+}
+
+.section.createSection .workflowName:last-child {
+  margin-bottom: 0;
+}

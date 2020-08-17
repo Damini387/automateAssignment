@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { forIn, isEmpty } from 'lodash';
 
 import CreateSection from '../section/createSection';
 
-import { forIn } from 'lodash';
-
-import './index.css';
-
-const WorkflowCreate = () => {
+const WorkflowCreate = (props) => {
 
     const [showAddNode, setShowAddNode] = useState(false);
 
     const [inputValue, setInputValue] = useState('');
+
+    const [workFlowName, setWorkFlowName] = useState('');
 
     const [latestNode, setLatestNode] = useState([]);
 
@@ -148,7 +147,7 @@ const WorkflowCreate = () => {
 
         const removeLatestNode = latestNode.pop();
 
-        const removeNode = latestNode.slice(0, latestNode.length-1);
+        const removeNode = latestNode.slice(0, latestNode.length - 1);
 
         setLatestNode(removeNode);
 
@@ -160,18 +159,18 @@ const WorkflowCreate = () => {
 
                     var index = 0;
 
-                    if(key==='pendingTask') {
+                    if (key === 'pendingTask') {
                         index = allTasks.pendingTask.indexOf(removeLatestNode);
                         if (index !== -1) {
                             allTasks.pendingTask.splice(index, 1);
                         }
                     }
-                    else if(key==='inprogressTask'){
+                    else if (key === 'inprogressTask') {
                         index = allTasks.inprogressTask.indexOf(removeLatestNode);
                         if (index !== -1) {
                             allTasks.inprogressTask.splice(index, 1);
                         }
-                
+
                     } else {
                         index = allTasks.completedTask.indexOf(removeLatestNode);
                         if (index !== -1) {
@@ -179,7 +178,7 @@ const WorkflowCreate = () => {
                         }
                     }
                 }
-                
+
 
                 tasks = {
                     completedTask: [
@@ -194,7 +193,7 @@ const WorkflowCreate = () => {
                 };
 
                 setAllTasks(tasks);
-        
+
 
                 renderSections();
             })
@@ -209,6 +208,29 @@ const WorkflowCreate = () => {
         setShowAddNode(false);
     }
 
+    const saveWorkflow = () => {
+        if (isEmpty(workFlowName)) {
+            alert("enter workflow name");
+        }
+        else if (tasks && isEmpty(latestNode)) {
+            alert("please add nodes");
+        }
+        else if (allTasks) {
+            const workflowStatus = getWorkflowStatus();
+            props.showHome(workFlowName, workflowStatus);
+        }
+    };
+
+    const getWorkflowStatus = () => {
+        if (allTasks.pendingTask.length > 0) {
+            return "pending";
+        } else if (allTasks.inprogressTask.length > 0) {
+            return "inprogress";
+        } else {
+            return "completed";
+        }
+    }
+
     useEffect(() => {
         renderSections();
     });
@@ -219,19 +241,19 @@ const WorkflowCreate = () => {
 
                 <div className="searchFilter">
 
-                    <input name="workflowName" placeholder="WORKFLOW NAME" className="workFlowName" />
+                    <input name="workFlowName" value={workFlowName} placeholder="WORKFLOW NAME" className="workFlowName" onChange={(e) => setWorkFlowName(e.currentTarget.value)} />
 
                 </div>
 
                 <div className="buttons">
 
-                    {tasks.completedTask.length > 0 && <button className="shuffleBtn">Shuffle</button>}
+                    {allTasks.completedTask.length > 0 && <button className="shuffleBtn" disabled>Shuffle</button>}
 
                     <button className="deleteBtn" onClick={deleteNode}>Delete</button>
 
                     <button className="nodeBtn" onClick={addNodeModal}>Add Node</button>
 
-                    <button className="saveBtn">Save</button>
+                    <button className="saveBtn" onClick={saveWorkflow}>Save</button>
 
                 </div>
 
