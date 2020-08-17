@@ -1,3 +1,14 @@
+### Improvements to be done for the application
+
+Need to create more reducers and proper store for create workflow
+Re-check login functionality
+Add functionality for Shuffle, Filter button
+Add back/cancel button so that user can go back to workflow home
+Add more better UI
+Add PostCSS or tailwind CSS or atleast SCSS instead of using CSS
+Add webpack
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
